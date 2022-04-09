@@ -46,11 +46,11 @@ include('lock.php');
                                     <input type="password" class="form-control" name="password" placeholder="********" autocomplete="off">
                                 
                                 </div>
-                                <div class="form-group">
+                               <!--  <div class="form-group">
                                     <div class="fxt-switcher-description2 text-right">
                                         <a href="<?=BASE_URL?>forgot-password.php" class="fxt-switcher-text">Recovery Password</a>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <button type="submit" name="login_submit" class="fxt-btn-fill">Log In</button>
                                 </div>
