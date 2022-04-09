@@ -4,10 +4,10 @@ include('lock.php');
 ?>
 <body>
 
-    <section class="fxt-template-animation fxt-template-layout34" data-bg-image="img/elements/bg1.png">
+    <section class="fxt-template-animation fxt-template-layout34" data-bg-image="<?=BASE_URL?>img/elements/bg1.png">
         <div class="fxt-shape">
             <div class="fxt-transformX-L-50 fxt-transition-delay-1">
-                <img src="img/elements/shape1.png" alt="Shape">
+                <img src="<?=BASE_URL?>img/elements/shape1.png" alt="Shape">
             </div>
         </div>
         <div class="container">
@@ -16,11 +16,11 @@ include('lock.php');
                     <div class="fxt-column-wrap justify-content-between">
                         <div class="fxt-animated-img">
                             <div class="fxt-transformX-L-50 fxt-transition-delay-10">
-                                <img src="img/figure/bg34-1.png" alt="Animated Image">
+                                <img src="<?=BASE_URL?>img/figure/bg34-1.png" alt="Animated Image">
                             </div>
                         </div>
                         <div class="fxt-transformX-L-50 fxt-transition-delay-3">
-                            <a href="login-34.html" class="fxt-logo"><img src="img/logo.png" alt="Logo"></a>
+                            <a href="login-34.html" class="fxt-logo"><img src="<?=BASE_URL?>img/logo.png" alt="Logo"></a>
                         </div>
                         <div class="fxt-transformX-L-50 fxt-transition-delay-5">
                             <div class="fxt-middle-content">
@@ -30,7 +30,7 @@ include('lock.php');
                         </div>
                         <div class="fxt-transformX-L-50 fxt-transition-delay-7">
                             <div class="fxt-qr-code">
-                                <img src="img/elements/qr-login-34.png" alt="QR">
+                                <img src="<?=BASE_URL?>img/elements/qr-login-34.png" alt="QR">
                             </div>
                         </div>
                     </div>

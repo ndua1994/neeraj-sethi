@@ -1,5 +1,6 @@
 <?php 
 include('db/config.php');
+include('lock.php');
 $det=base64_decode($_GET['det']);
 ?>
 <!doctype html>
