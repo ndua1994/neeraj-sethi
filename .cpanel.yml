@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/drehomes/public_html/
+    - export DEPLOYPATH=/home/drehomes/neeraj-sethi.drehomes.ae/
     - /bin/cp * $DEPLOYPATH
