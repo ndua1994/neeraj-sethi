@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 sleep(1);
 include('../db/config.php');
 $email_id=prepStr($_POST['email_id']);
