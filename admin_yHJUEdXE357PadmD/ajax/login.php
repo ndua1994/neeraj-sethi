@@ -6,7 +6,7 @@ $password=prepStr($_POST['password']);
 
 
 $query=mysqli_query($conn,"select * from tbl_login where email_id='$email_id'
-	                and password='".md5($password)."' and is_active='1'");
+	                and password='$password' and is_active='1'");
 $totl=mysqli_num_rows($query);
 $details=mysqli_fetch_array($query);
 if($totl>0)

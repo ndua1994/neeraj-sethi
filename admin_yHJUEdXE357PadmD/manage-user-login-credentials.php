@@ -5,8 +5,6 @@ include ('lock2.php');
 
 if(isset($_POST['manage_info_submit']))
 {
-	$first_name=prepStr($_POST['first_name']);
-	$last_name=prepStr($_POST['last_name']);
 	$email_id=prepStr($_POST['email_id']);
 	$password=prepStr($_POST['password']);
 	$is_active=(prepStr($_POST['is_active']!='' ? 1 : 2));
@@ -15,22 +13,20 @@ if(isset($_POST['manage_info_submit']))
 
 
 
-	$query=mysqli_query($conn,"update tbl_login 
-		                                               SET 
-		                                                   first_name='$first_name',
-		                                                   last_name='$last_name',
-		                                                   email_id='$email_id',
-		                                                   password='".md5($password)."',
-		                                                   is_active='$is_active'
-		                                                   where login_id=1");
+	$query=mysqli_query($conn,"update tbl_user_login 
+		                                            SET 
+	                                                   email_id='$email_id',
+	                                                   password='$password',
+	                                                   is_active='$is_active'
+	                                                   where user_login_id=1");
 	if($query)
 	{
-	header('Location:'.BASE_URL.'manage-login-credentials.php');
+	header('Location:'.BASE_URL.'manage-user-login-credentials.php');
 	}
 
 }
 
-$details=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_login where login_id=1"));
+$details=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_user_login where user_login_id=1"));
 
 ?>
 	<!--begin::Body-->
@@ -127,7 +123,7 @@ $details=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_login where lo
 <div class="card card-custom gutter-b">
 <div class="card-header flex-wrap py-3">
 <div class="card-title">
-<h3 class="card-label">Manage Login Credentials</h3>
+<h3 class="card-label">Manage Admin Login Credentials</h3>
 </div>
 <div class="card-toolbar">
 </div>
@@ -145,18 +141,6 @@ $details=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_login where lo
 
 
 
-
-<div class="form-group">
-<label for="exampleInputPassword1">First Name
-<span class="text-danger">*</span></label>
-<input type="text" name="first_name" value="<?=$details['first_name']?>" class="form-control" placeholder="First Name">
-</div>
-
-<div class="form-group">
-<label for="exampleInputPassword1">Last Name
-<span class="text-danger">*</span></label>
-<input type="text" name="last_name" value="<?=$details['last_name']?>" class="form-control" placeholder="Last Name">
-</div>
 
 
 
@@ -189,7 +173,6 @@ $details=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_login where lo
 
 </div>
 <div class="card-footer">
-	<input type="hidden" name="login_img_hidden" value="<?=$details['login_img']?>">
 <button type="submit" name="manage_info_submit" class="btn btn-primary mr-2">Update</button>
 <button type="reset" class="btn btn-secondary">Reset</button>
 </div>
