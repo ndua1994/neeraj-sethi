@@ -2,6 +2,7 @@
 <?php 
 include('includes/header.php');
 include ('lock.php');
+$login_img=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_other_information where is_active='1'"));
 ?>
 
 	<!--begin::Body-->
@@ -11,7 +12,7 @@ include ('lock.php');
 			<!--begin::Login-->
 			<div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
 				<!--begin::Aside-->
-				<div class="login-aside d-flex flex-column flex-row-auto" style="background-image:url(<?=BASE_URL?>assets/media/marriage/pic1.jpeg);background-size: cover;background-position: inherit;">
+				<div class="login-aside d-flex flex-column flex-row-auto" style="background-image:url(<?=BASE_URL?>uploads/<?=$login_img['login_img']?>);background-size: cover;background-position: center;">
 					<!--begin::Aside Top-->
 <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
 <!--begin::Aside header-->
@@ -55,7 +56,7 @@ include ('lock.php');
 								<div class="form-group">
 									<div class="d-flex justify-content-between mt-n5">
 										<label class="font-size-h6 font-weight-bolder text-dark pt-5">Password</label>
-										<a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Forgot Password ?</a>
+										<!-- <a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Forgot Password ?</a> -->
 									</div>
 									<input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="password" name="password" autocomplete="off" />
 								</div>

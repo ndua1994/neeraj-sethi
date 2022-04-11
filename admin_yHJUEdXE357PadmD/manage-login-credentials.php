@@ -5,49 +5,32 @@ include ('lock2.php');
 
 if(isset($_POST['manage_info_submit']))
 {
-	$mobile_no=prepStr($_POST['mobile_no']);
+	$first_name=prepStr($_POST['first_name']);
+	$last_name=prepStr($_POST['last_name']);
 	$email_id=prepStr($_POST['email_id']);
-	$twitter_link=prepStr($_POST['twitter_link']);
-	$facebook_link=prepStr($_POST['facebook_link']);
-	$insta_link=prepStr($_POST['insta_link']);
+	$password=prepStr($_POST['password']);
 	$is_active=(prepStr($_POST['is_active']!='' ? 1 : 2));
 
 
-	if(!empty($_FILES['login_img']['name']))
-	{
-	$login_img='img_'.rand(0,10000).'_'.$_FILES['login_img']['name'];
-	}
-	else
-	{
-	$login_img=$_POST['login_img_hidden'];
-	}
 
 
 
-
-	$query=mysqli_query($conn,"update tbl_other_information 
+	$query=mysqli_query($conn,"update tbl_login 
 		                                               SET 
-		                                                   login_img='$login_img',
-		                                                   mobile_no='$mobile_no',
+		                                                   first_name='$first_name',
+		                                                   last_name='$last_name',
 		                                                   email_id='$email_id',
-		                                                   twitter_link='$twitter_link',
-		                                                   facebook_link='$facebook_link',
-		                                                   insta_link='$insta_link',
+		                                                   password='".md5($password)."',
 		                                                   is_active='$is_active'
-		                                                   where info_id=1");
+		                                                   where login_id=1");
 	if($query)
 	{
-		if(!empty($_FILES['login_img']['name']))
-	{
-		unlink('uploads/'.$_POST['login_img_hidden'].'');
-	move_uploaded_file($_FILES['login_img']['tmp_name'],"uploads/$login_img");
-	}	
-	header('Location:'.BASE_URL.'manage-other-information.php');
+	header('Location:'.BASE_URL.'manage-login-credentials.php');
 	}
 
 }
 
-$details=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_other_information where info_id=1"));
+$details=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_login where login_id=1"));
 
 ?>
 	<!--begin::Body-->
@@ -144,7 +127,7 @@ $details=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_other_informat
 <div class="card card-custom gutter-b">
 <div class="card-header flex-wrap py-3">
 <div class="card-title">
-<h3 class="card-label">Manage Other Information</h3>
+<h3 class="card-label">Manage Login Credentials</h3>
 </div>
 <div class="card-toolbar">
 </div>
@@ -160,20 +143,22 @@ $details=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_other_informat
 ="otherinfo-frm">
 <div class="card-body">
 
-<div class="form-group">
-<label>Login Image</label>
-<input type="file" name="login_img" class="form-control">
-<div class="mt-2">
-<img src='<?=BASE_URL?>uploads/<?=$details['login_img']?>' width='80'>	
-</div>
-</div>
+
 
 
 <div class="form-group">
-<label for="exampleInputPassword1">Mobile Number
+<label for="exampleInputPassword1">First Name
 <span class="text-danger">*</span></label>
-<input type="text" name="mobile_no" value="<?=$details['mobile_no']?>" class="form-control" placeholder="Mobile Number">
+<input type="text" name="first_name" value="<?=$details['first_name']?>" class="form-control" placeholder="First Name">
 </div>
+
+<div class="form-group">
+<label for="exampleInputPassword1">Last Name
+<span class="text-danger">*</span></label>
+<input type="text" name="last_name" value="<?=$details['last_name']?>" class="form-control" placeholder="Last Name">
+</div>
+
+
 
 <div class="form-group">
 <label for="exampleInputPassword1">Email ID
@@ -182,24 +167,14 @@ $details=mysqli_fetch_array(mysqli_query($conn,"select * from tbl_other_informat
 </div>
 
 
-<div class="form-group">
-<label for="exampleInputPassword1">Twitter Link
-<span class="text-danger">*</span></label>
-<input type="text" name="twitter_link" value="<?=$details['twitter_link']?>" class="form-control" placeholder="Twitter Link">
-</div>
 
 <div class="form-group">
-<label for="exampleInputPassword1">Facebook Link
+<label for="exampleInputPassword1">Password
 <span class="text-danger">*</span></label>
-<input type="text" name="facebook_link" value="<?=$details['facebook_link']?>" class="form-control" placeholder="Facebook Link">
+<input type="password" name="password" value="<?=$details['password']?>" class="form-control" placeholder="Password">
 </div>
 
 
-<div class="form-group">
-<label for="exampleInputPassword1">Instagram Link
-<span class="text-danger">*</span></label>
-<input type="text" name="insta_link" value="<?=$details['insta_link']?>" class="form-control" placeholder="Instagram Link">
-</div>
 
 
 <div class="form-group">

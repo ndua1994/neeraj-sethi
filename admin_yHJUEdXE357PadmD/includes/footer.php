@@ -1,7 +1,7 @@
 <!--begin::Content footer-->
 					<div class="d-flex justify-content-lg-start justify-content-center align-items-end py-7 py-lg-0">
 						<div class="text-dark-50 font-size-lg font-weight-bolder mr-10">
-							<span class="mr-1"><?=date('Y')?>©</span>
+							<span class="mr-1"><?=date('Y')?> ©</span>
 							<a href="http://keenthemes.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">Neeraj Sethi</a>
 						</div>
 					</div>
